@@ -1,0 +1,49 @@
+/**
+ *
+ * Contains tooltips of various types based on color differences.
+ *
+ * Classes added:
+ * 	1) hint-error
+ * 	2) hint-warning
+ * 	3) hint-info
+ * 	4) hint-success
+ *
+ */
+
+
+// mixin to generate different color style tooltips
+@mixin hint-type($color) {
+  &:after {
+    background-color: $color;
+  }
+  // generate arrow color style
+  @include arrow-border-color($color);
+}
+
+/**
+ * Error
+ */
+.#{$prefix}error {
+  @include hint-type($errorColor);
+}
+
+/**
+ * Warning
+ */
+.#{$prefix}warning {
+  @include hint-type($warningColor)
+}
+
+/**
+ * Info
+ */
+.#{$prefix}info {
+  @include hint-type($infoColor)
+}
+
+/**
+ * Success
+ */
+.#{$prefix}success {
+  @include hint-type($successColor)
+}

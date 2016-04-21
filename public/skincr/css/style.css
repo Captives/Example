@@ -1,0 +1,91 @@
+html, body {
+    overflow: hidden;
+}
+
+#contentGroup {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    margin-left: -400px;
+    margin-top: -250px;
+    left: 50%;
+    top: 50%;
+}
+
+#contentGroup canvas {
+    position: absolute;
+    cursor: default;
+    top: 0;
+    left: 0;
+}
+
+.offline {
+    filter: grayscale(100%); /*火狐*/
+    -webkit-filter: grayscale(100%); /*chrome*/
+}
+
+.online {
+    filter: grayscale(0); /*火狐*/
+    -webkit-filter: grayscale(0); /*chrome*/
+}
+
+.prvchat {
+    -moz-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    background-color: rgba(255, 255, 255, 1);
+    position: fixed;
+    margin-top: 5%;
+    margin-left: -300px;
+    z-index: 2;
+    left: 40%;
+    top: 5%;
+    display: none;
+}
+
+#prvTChatDiv {
+    left: 30%;
+}
+
+#prvSChatDiv {
+    left: 60%;
+}
+
+#courseList {
+    -moz-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+    width: 820px;
+    background-color: rgba(255, 255, 255, 1);
+    position: fixed;
+    margin-top: -250px;
+    margin-left: -400px;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    display: none;
+}
+
+.tips-content .tips {
+    position: fixed;
+    z-index: 2;
+    padding: 10px 15px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    font-size: 18px;
+    top: 40%;
+    left: 50%;
+    font-size: 18px;
+    width: 500px;
+    margin: 0 0 10px -250px;
+    text-align: center;
+    display: none;
+}
+
+.tips-content .tips h1 {
+    font-size: 18px;
+}

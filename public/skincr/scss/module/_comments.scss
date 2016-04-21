@@ -1,0 +1,39 @@
+.module-comments {
+  h5 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .stars {
+    margin: 10px 0;
+  }
+  textarea.content {
+    width: 100%;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    border-radius: 5px;
+    padding: 5px 10px;
+
+  }
+}
+
+//评星
+.stars-comment {
+  .rate {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: transparent none no-repeat 0 0;
+    margin-right:5px;
+    cursor: pointer;
+  }
+  .rate-empty {
+    background-image: url("../icons/icon_heart_o.svg");
+  }
+  .rate-full {
+    background-image: url("../icons/icon_heart.svg");
+  }
+  .rate-active {
+    background-image: url("../icons/icon_heart.svg");
+    opacity: .2;
+  }
+}

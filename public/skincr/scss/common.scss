@@ -1,0 +1,31 @@
+@import "normalize";
+@import "global";
+@import "base";
+@import "mixin";
+@import "iconimg";
+@import "teacher";
+//frame
+@import "frame";
+@import "header";
+@import "courseware";
+@import "sidebar";
+@import "monitor";
+//module
+@import "hint";
+@import "sweetalert";
+@import "webcam";
+@import "chat";
+@import "modals";
+@import "module";
+@import "forms";
+@import "buttons";
+@import "switch";
+@import "alerts";
+@import "animate";
+//comment star
+@import "module/comments";
+//responsive
+@import "screen";
+
+//iPad size
+@import "student";

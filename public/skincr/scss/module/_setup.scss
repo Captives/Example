@@ -1,0 +1,59 @@
+
+.module-setup{
+  width: 100%;
+  padding: 0 20px;
+  .module-setup-wrap{
+    .module-webcam{
+      width: 320px;
+      img{
+        width: 100%;
+      }
+      p{
+        margin-bottom: 0;
+      }
+    }
+    .setup-group{
+      width: 360px;
+      p{
+        margin: 10px 0;
+      }
+      .progress{
+        width: 100%;
+        height: 10px;
+        background: #eee;
+        border-radius: 5px;
+        position: relative;
+        .progress-bar{
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 10px;
+          background: #46ac02;
+          border-radius: 5px;
+        }
+      }
+      select{
+        width: 100%;
+        border: 1px $blue solid;
+        padding: 5px;
+        border-radius: 5px;
+      }
+      button{
+        width: 100%;
+        margin: 0;
+      }
+    }
+  }
+  .but-group{
+    text-align: center;
+  }
+  button{
+    min-width: 90px;
+    padding: 10px 20px;
+    margin: 10px;
+    color: #fff;
+    border-radius: $border-radius;
+  }
+}
+

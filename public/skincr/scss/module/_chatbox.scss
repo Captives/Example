@@ -1,0 +1,13 @@
+.module-chatbox{
+  .mod-chat{
+    .msg_input{
+      input {
+        width: 85%;
+      }
+      button {
+        width: 15%;
+        border-radius: 0 0 5px;
+      }
+    }
+  }
+}

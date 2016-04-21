@@ -1,0 +1,119 @@
+
+.header {
+  width: 100%;
+  height: 50px;
+  padding: 0 330px 0 0;
+  position: relative;
+  .logo {
+    width: 200px;
+    padding: 5px 0 4px 0;
+    img {
+      width: 145px;
+    }
+  }
+  .pack {
+    width: 100%;
+    position: relative;
+    .lesson-time {
+      position: absolute;
+      top: 0;
+      left: 170px;
+      small {
+        font-size: 12px;
+        color: $font-text-color;
+        display: block;
+      }
+      p {
+        text-align: center;
+        margin: 0;
+        line-height: 1;
+        color: rgba(255, 255, 255, 1);
+
+      }
+    }
+    .btnarea {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      > a {
+        float: left;
+        margin-right: 1px;
+      }
+      button {
+        padding: 10px 15px;
+        color: $font-title-color;
+        background: #274969;
+        border: none;
+        &:last-child {
+          margin: 0;
+        }
+        &:hover {
+          background: #226494;
+        }
+      }
+      &.teacher {
+        margin-left: -172px
+      }
+      &.student {
+        margin-left: -85px;
+      }
+      &.monitor {
+        margin-left: -85px;
+      }
+
+    }
+    .links {
+      position: absolute;
+      top: 7px;
+      right: 0;
+      button {
+        padding-right: 0;
+        margin: 0 $gap;
+        border: 0;
+        background: rgba(0, 0, 0, 0);
+        color: $font-text-color;
+        &:last-child {
+          margin-right: 0;
+        }
+
+      }
+    }
+  }
+  .chunk {
+    width: 320px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    .star {
+      margin-top: 6px;
+      .icon-img:before {
+        @include box(28px);
+      }
+    }
+    .total-time {
+      line-height: 40px;
+      i {
+        font-style: normal;
+        color: $font-text-color;
+      }
+    }
+  }
+}
+
+[class ^= "border-radius-"] {
+  float: left;
+  text-align: center;
+  padding: 0 0px;
+}
+
+.border-radius-l {
+  border-radius: 5px 0 0 5px;
+}
+
+.border-radius-clear {
+  border-radius: 0;
+}
+
+.border-radius-r {
+  border-radius: 0 5px 5px 0;
+}

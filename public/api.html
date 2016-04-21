@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>WebSocket API联调页面</title>
+    <link rel="stylesheet" href="http://bootswatch.com/flatly/bootstrap.min.css"/>
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="./../skincr/js/lib/EventEmitter.min.js"></script>
+    <script src="./../skincr/js/service/common.js"></script>
+    <script src="./../skincr/js/service/phpAction.js"></script>
+    <style type="text/css">
+        .title{
+            text-align: center;
+            color: #FFFFFF;
+        }
+        .buttons{
+            text-align: center;
+        }
+        #content,#result{
+            min-height: 300px;
+            max-height: 500px;
+            overflow-y: scroll;
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid title">
+        <h3>联调工具</h3>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 form-group has-success">
+            <label class="control-label" for="urlText">API URL:</label>
+            <input id="urlText" type="text" class="form-control" value="http://test.dadaabc.com/wsapi" placeholder="API URL">
+        </div>
+         <div class="col-sm-7 form-group has-success">
+                <label class="control-label" for="nameText">Method Name:</label>
+                <input id="nameText" type="text" class="form-control" placeholder="method" value="getActionLog">
+            </div>
+    </div>
+
+    <div class="form-group has-success">
+        <label class="control-label" for="paraText">Parameters:</label>
+        <input id="paraText" type="text" class="form-control"  placeholder="format(key=value&key=value)" value="roomId=26620&userId=117&userType=1">
+        <p id="error" class="text-danger"></p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">OUTPUT</h3>
+                </div>
+                <div id="content" class="panel-body"></div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">RESULT</h3>
+                </div>
+                <div id="result" class="panel-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row buttons">
+        <a href="javascript:" id="sendButton" class="col-sm-2 col-sm-offset-1 col btn btn-success btn-sm">Send</a>
+        <a href="javascript:" id="resetButton" class="col-sm-2 col-sm-offset-1 btn btn-warning btn-sm">Reset</a>
+        <a href="javascript:" id="cleanButton" class="col-sm-2 col-sm-offset-1 btn btn-info btn-sm">Clean</a>
+    </div>
+</div>
+<div class="jumbotron">
+    <p id="putDiv"></p>
+</div>
+
+<script type="application/javascript">
+    var output = document.querySelector("#content");
+    var result = document.querySelector("#result");
+    document.querySelector("#urlText").value = "http://"+window.location.hostname + ":" + window.location.port+"/action";
+    document.querySelector("#sendButton").onclick = function (e) {
+        output.innerText = "";
+        var url = document.querySelector("#urlText").value;
+        var method = document.querySelector("#nameText").value;
+        var par =  document.querySelector("#paraText").value.split("&");
+
+        var action = new BaseAction();
+        var data = {action:method};
+        for(var i in par){
+            var item = par[i].split("=");
+            if(item.length != 2){
+                document.querySelector("#error").innerText = "参数错误";
+                return;
+            }else{
+                data[item[0]] = item[1];
+            }
+        }
+
+        var options = {type:"POST", data:data, url:url};
+        var that = this;
+        output.innerText += "\n> options= "+JSON.stringify(options);
+        action.action(options, function(text){
+            var json = JSON.parse(text);
+            output.innerText +="\n\n>" + text.replace(new RegExp(/\,/g),",\n");
+            result.innerText =">  "+ JSON.stringify(json).replace(new RegExp(/\,/g),",\n");
+        },function(error){
+            output.innerHTML +="<br>> <b style='color: #ff0000'>ERROR:" + JSON.stringify(error)+"</b>";
+        },function(){
+            output.innerText +="\n> Sending...:";
+        });
+    };
+
+    document.querySelector("#cleanButton").onclick = function (e) {
+        output.innerText = "";
+        result.innerText = "";
+    };
+
+    document.querySelector("#resetButton").onclick = function (e) {
+        output.innerText = "";
+        result.innerText = "";
+        document.querySelector("#error").innerText = "";
+        document.querySelector("#nameText").value = "";
+        document.querySelector("#paraText").value = "";
+    };
+</script>
+</html>

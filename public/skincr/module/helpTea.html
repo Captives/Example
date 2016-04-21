@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title">Tips for Common Technical Problems</h4>
+</div>
+<div class="modal-body">
+    <div class="module-help">
+        <div class="tip-group">
+            <dl>
+                <dt class="icon-img icon_star icon-small">Students can’t hear me?</dt>
+                <dd>Close all the browsers and open the classroom again.</dd>
+                <dt class="icon-img icon_star icon-small">Students can’t see me? Or I can’t see the student?</dt>
+                <dd>Try to reaccess the classroom.</dd>
+                <dt class="icon-img icon_star icon-small">I can’t hear the student?</dt>
+                <dd>Check if your headset plug well, the switch on the headset is open, or whether your system be muted.
+                    Plugin your headset and restart the browsers, access the classroom .</dd>
+            </dl>
+        </div>
+        <div class="else-group">
+            <h3 class="title red">I tried these tips above all and still doesn”t work, or any other issues.</h3>
+
+            <div class="radio-group">
+                <label><input type="radio" name="help" value="1">Need technical help</label>
+                <label><input type="radio" name="help" value="2">Need teaching assistant help</label>
+                <label><input type="radio" name="help" value="3">Student needs help</label>
+            </div>
+            <div class="but-group">
+                <button class="bg-red" onclick="helpSupport()">Yes, I need help</button>
+                <button class="bg-grey" data-dismiss="modal">Don't need to, solve yourself</button>
+            </div>
+        </div>
+    </div>
+</div>

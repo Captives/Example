@@ -1,0 +1,45 @@
+<div class="modal-header" onload="openReference()">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title">Information of last class about this student:</h4>
+</div>
+<div class="modal-body">
+    <!--detail-->
+    <div class="module-student">
+        <table>
+            <tr>
+                <td class="info-item">Teacher:</td>
+                <td id="nameText">Teacher</td>
+            </tr>
+            <tr>
+                <td class="info-item">Time:</td>
+                <td id="timeText">09-18 (Thu) 18:20</td>
+            </tr>
+            <tr>
+                <td class="info-item">Content:</td>
+                <td id="contentText">[1A]1A longman express</td>
+            </tr>
+            <tr>
+                <td class="info-item">Progress:</td>
+                <td id="proText">Page1 - 5pages</td>
+            </tr>
+            <tr>
+                <td class="info-item">Assessment:</td>
+                <td><div id="assText" style="max-height: 200px;overflow-y: auto;">[1A]Unit1.1 - Good morning class - 1A longman express</div></td>
+            </tr>
+        </table>
+    </div>
+    <!--//detail-->
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+
+<script type="text/javascript">
+    document.querySelector("#nameText").innerText = comment['t_name'];
+    document.querySelector("#timeText").innerText = comment['class_time'];
+    document.querySelector("#contentText").innerText = comment['c_name_en'] +' - '+ comment['c_c_name_en'];
+    document.querySelector("#assText").innerText = comment['s_comment'];
+    document.querySelector("#proText").innerText = " Page " + comment['page_start'] + " - " + comment['page_end'] +" pages";
+</script>

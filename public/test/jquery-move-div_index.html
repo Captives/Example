@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html class=''>
+<head>
+    <title>基于jquery的可拖动div</title>
+    <style>
+        html{
+            width: 100%;
+            height: 100%;
+        }
+
+        body{
+            background: radial-gradient(#ACBEC8, #3A4E57);
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Raleway' , sans-serif;
+        }
+
+        .noselect {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .panel{
+            width: 500px;
+            height: 300px;
+            background: #181818;
+            margin-left: -250px;
+            left: 50%;
+            position: absolute;
+        }
+
+        .panel_header{
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            line-height: 30px;
+            color: #111;
+            background: #E31836;
+            cursor: default;
+        }
+
+        .container{
+            width: 100%;
+            height: calc(100% - 30px);
+            color: #eee;
+            padding: 35px 0 0 0;
+            text-align: center;
+            font-size: 36px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="panel noselect">
+    <div class="panel_header">
+        <span style="font-weight: 200"> Header</span>
+
+    </div>
+    <div class="container">
+        The Cords
+    </div>
+</div>
+<script src="http://www.w2bc.com/demo/2014-10-19-jquery-move-div/jquery.js"></script>
+<script>
+    var clicked = "Nope.";
+    var mausx = "0";
+    var mausy = "0";
+    var winx = "0";
+    var winy = "0";
+    var difx = mausx - winx;
+    var dify = mausy - winy;
+    var panel = $(".panel");
+
+    $("html").mousemove(function (event) {
+        mausx = event.pageX;
+        mausy = event.pageY;
+        winx = panel.offset().left;
+        winy = panel.offset().top;
+        if (clicked == "Nope.") {
+            difx = mausx - winx;
+            dify = mausy - winy;
+        }
+
+        var newx = event.pageX - difx - panel.css("marginLeft").replace('px', '');
+        var newy = event.pageY - dify - panel.css("marginTop").replace('px', '');
+        if(newx <= 0){
+            newx = 0;
+        }
+
+        if(newy <= 0){
+            newy = 0;
+        }
+
+        panel.css({ top: newy, left: newx });
+
+        $(".container").html(
+                "Mouse Cords: " + mausx + "," + mausy + "<br />" +
+                "Window Cords:" + winx + "," + winy + "<br /> " +
+                "Draggin?: " + clicked + "<br />" +
+                "Difference: " + difx + "," + dify  + "<br />" +
+                "New Point" + newx + "," + newy);
+    });
+
+    $(".panel_header").mousedown(function (event) {
+        clicked = "Yeah.";
+    });
+
+    $("html").mouseup(function (event) {
+
+        clicked = "Nope.";
+    });
+
+</script>
+</body>
+</html>

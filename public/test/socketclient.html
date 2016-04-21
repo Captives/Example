@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1″ user-scalable=no">
+    <title>WebSocket Client</title>
+    <link rel="stylesheet" href="./../css/style.css"/>
+    <script type="text/javascript" src="/socketcluster.js"></script>
+</head>
+<body>
+<div class="header">
+    <h2>在线房间列表   <span id="sp1"></span> <span id="sp2"></span></h2>
+</div>
+<div class="content">
+    <div id="msgList" style="width: 300px;height: 80%;">
+        <ol></ol>
+    </div>
+    <input type="text" style="width: 300px; height: 30px;font-size: 20px">
+    <button id="testBtn" type="button">测试订阅</button>
+    <button id="closeBtn" type="button">断开连接</button>
+
+    <!--<div style="width: 100%;height: 100%;" id="debug">-->
+
+    <!--</div>-->
+</div>
+
+<script type="text/javascript">
+    function addMessage(text){
+        var li = document.createElement("li");
+        li.innerText = text;
+        document.querySelector("#msgList").appendChild(li);
+    }
+    var socket = null;
+    var isAuthenticated = false;
+    window.onload = function (e) {
+        var options = {
+            protocol: 'http',
+            hostname: '192.168.10.31',
+            port: 3000
+        };
+
+        socket = socketCluster.connect();
+        socket.on('error', function (err) {
+            throw 'Socket error - ' + err;
+        });
+
+        socket.on('connect', function (status) {
+            isAuthenticated = status.isAuthenticated;
+            console.log("connect",status);
+            socket.emit("login",{room:1000,uid:111}, function (err, failure) {
+                var error = null;
+                if (err) {
+                    error = 'Failed to login due to error: ' + err;
+                    isAuthenticated = false;
+                } else if (failure) {
+                    error = failure;
+                    isAuthenticated = false;
+                } else {
+                    error = '';
+                    isAuthenticated = true;
+                }
+                console.log(error,isAuthenticated);
+            });
+            console.log('CONNECTED');
+        });
+
+        socket.on("removeAuthToken", function () {
+            isAuthenticated = false;
+        });
+
+        //套接字断开
+        socket.on("disconnect", function () {
+            console.log(' --------- UNCONNECTED  -----------');
+        });
+
+        // Listen to an event called 'rand' from the server
+        socket.on('time', function (data) {
+            var date = new Date();
+            date.setTime = data.time;
+            document.querySelector("#sp1").innerText = date.toLocaleDateString() + date.toLocaleTimeString();
+        });
+
+        socket.on("success", function (data) {
+            document.querySelector("#sp2").innerText = "进程ID:" + data.pid;
+        });
+
+        var sampleChannel = socket.subscribe('sample');
+        sampleChannel.on('subscribeFail', function (err) {
+            console.log('Failed to subscribe to the sample channel due to error: ' + err);
+        });
+
+        sampleChannel.watch(function (num) {
+            addMessage(num);
+            console.log('Sample channel message:', num);
+        });
+    };
+
+    document.querySelector("#testBtn").onclick = function (e) {
+        socket.emit("sampleClientEvent",{rand:Math.random()});
+    };
+
+    document.querySelector("#closeBtn").onclick = function (e) {
+        socket.disconnect();
+    }
+</script>
+</body>
+</html>

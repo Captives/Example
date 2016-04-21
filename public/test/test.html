@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1″ user-scalable=no">
+    <title>JS测试</title>
+    <link rel="stylesheet" href="./../css/style.css"/>
+    <style type="text/css">
+        #titleBar{
+            position:relative;
+            z-index: 1;
+            width: 100%;
+            float: left;
+        }
+
+        #contentGroup{
+            position: absolute;
+            width: 1000px;
+            height: 700px;
+            background: #009cda;
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+<div>
+  <div id="titleBar">
+   <input type="button" value="上一页" id="preBu">
+   <input type="button" value="下一页" id="nextBu">
+   <input type="button" value="清除" id="cBu">
+      <label><input id="graColor" type="color">画笔颜色</label>
+      <label><input id="graWidth" type="range" min="1" max="10">画笔大小</label>
+      <li id="li1">1</li>
+      <li id="li2">2</li>
+      <li id="li3">3</li>
+   </div>
+
+</div>
+
+<div id="contentGroup" class="contentGroup">
+    <img src="http://120.26.42.35/02/10.jpg"/>
+</div>
+
+<script src="./../js/service/common.js"></script>
+<script type="application/javascript">
+    var cw = null;
+    var draw = null;
+    window.onload = function (event) {
+     //   Alert.show("测试啊");
+        cw = new Courseware();
+        cw.ip = "http://120.26.42.35/02/";
+        cw.dataProvider(['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg',
+            '6.jpg','7.jpg','8.jpg','9.jpg','10.jpg',
+            '11.jpg','12.jpg','13.jpg','14.jpg','15.jpg',
+            '16.jpg','17.jpg','18.jpg','19.jpg','20.jpg',
+            '21.jpg','22.jpg','23.jpg','24.jpg','25.jpg',
+            '26.jpg','27.jpg']);
+
+        var parent = document.querySelector("#contentGroup");
+        var cc = document.createElement("canvas");
+        cc.setAttribute("width",parent.offsetWidth);
+        cc.setAttribute("height",parent.offsetHeight);
+        parent.appendChild(cc);
+        cw.canvas = cc;
+        cw.on("change",function(page){
+            console.log("当前第"+page);
+        });
+
+
+//      cw.canvas = document.querySelector("#canvasGroup");
+        console.log("start=",cw.prevPage());
+
+        var dc = document.createElement("canvas");
+        dc.setAttribute("width",parent.offsetWidth);
+        dc.setAttribute("height",parent.offsetHeight);
+        parent.appendChild(dc);
+
+
+        draw = new Draw(true);
+        draw.canvas = dc;
+        draw.on("mouseMove",function(x,y,mouseDown,lineWidth,lineColor){
+            document.querySelector("#li2").innerText ="move2:" + x+","+y;
+        });
+
+        var rc = document.createElement("canvas");
+        rc.setAttribute("id","draw1");
+        rc.setAttribute("width",parent.offsetWidth);
+        rc.setAttribute("height",parent.offsetHeight);
+        parent.appendChild(rc);
+        dr = new Draw();
+        dr.canvas = rc;
+    };
+
+    document.querySelector("#preBu").onclick = function(event){
+        console.log(cw.prevPage());
+    };
+
+    document.querySelector("#nextBu").onclick = function(event){
+        console.log(cw.nextPage());
+    }
+    document.querySelector("#cBu").onclick = function(event){
+            draw.clearRect();
+    }
+    document.querySelector("#graColor").onchange = function(event){
+        draw.lineColor = event.target.value;
+    }
+
+    document.querySelector("#graWidth").onchange = function(event){
+        draw.lineWidth = event.target.value;
+    }
+</script>
+</body>
+</html>

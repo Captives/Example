@@ -1,0 +1,13 @@
+.module-student{
+  table{
+    width: 100%;
+    td{
+      padding: 10px;
+      vertical-align: top;
+      &.info-item{
+        width: 15%;
+        text-align: right;
+      }
+    }
+  }
+}

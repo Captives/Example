@@ -1,0 +1,55 @@
+$global-font-size: 100%;
+$global-lineheight: 1.5;
+$primary-color: #2199e8;
+$secondary-color: #777;
+$success-color: #3adb76;
+$warning-color: #ffae00;
+$alert-color: #ec5840;
+$light-gray: #e6e6e6;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$black: #0a0a0a;
+$white: #fefefe;
+$body-background:  #212c41 !default;
+$body-font-color: $black;
+$body-font-family: 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif;
+//$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-antialiased: true;
+$global-margin: 1rem;
+$global-padding: 1rem;
+$global-weight-normal: normal;
+$global-weight-bold: bold;
+$global-radius: 0;
+$global-text-direction: ltr;
+//边框样式
+$border-default: 1px solid #e2e7ec !default;
+$border-radius: 5px !default;
+
+//颜色变量
+$main-bg-color: #212c41 !default;
+$white: #fff !default;
+$black: #151515 !default;
+$red: #f44e51 !default;
+$blue: #1377cf !default;
+$green: #3edc2c !default;
+$grey: #ddd !default;
+$silver: #f6f6f6 !default;
+$yellow: #ffcc00 !default;
+//文字颜色
+$font-title-color: rgba(255, 255, 255, 0.8) !default;
+$font-text-color: rgba(255, 255, 255, 0.6) !default;
+
+// 间隙
+$gap: 10px !default;
+
+//
+$button-hover-color:#e9edf2 !default;
+
+
+//seclet
+$color-red-error: rgb(185, 74, 72);
+$color-grey-arrow: rgba(204, 204, 204, 0.2);
+
+$width-default: 220px; // 3 960px-grid columns
+
+$zindex-select-dropdown: 1060; // must be higher than a modal background (1050)

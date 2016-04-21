@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title">常见问题</h4>
+</div>
+<div class="modal-body">
+    <div class="module-help">
+        <div class="tip-group">
+            <dl>
+                <dt class="icon-img icon_star icon-small">为什么老师听不到我的声音?</dt>
+                <dd>麦克风重新插上，然后关闭所有浏览器重新再打开并进入教室即可解决。</dd>
+                <dt class="icon-img icon_star icon-small">为什么老师看不到我/为什么我看不见老师?</dt>
+                <dd>请点击重进教室按钮即可解决。</dd>
+                <dt class="icon-img icon_star icon-small">为什么听不到老师声音？</dt>
+                <dd>查看耳机是否插好，或耳机上的线控开关是否已打开，系统音量是否被静音。插好耳机后需要重启浏览器并进入教室即可解决。</dd>
+            </dl>
+        </div>
+
+        <div class="else-group">
+            <h3 class="title red">以上我都试过了还是不行,我有其他事情。</h3>
+
+            <div class="radio-group">
+                <label><input type="radio" name="help" value="1">需要技术帮助</label>
+                <label><input type="radio" name="help" value="2">需要助教帮助</label>
+            </div>
+
+            <div class="but-group">
+                <button class="bg-red" onclick="helpSupport()">是的, 我需要帮助</button>
+                <button class="bg-grey" data-dismiss="modal">不需要帮助</button>
+            </div>
+
+        </div>
+    </div>
+</div>

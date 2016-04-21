@@ -1,0 +1,78 @@
+@mixin alert-type($color,$border,$background) {
+  color: $color;
+  border: 1px solid $border;
+  background-color: $background;
+  > button {
+    color: $color;
+  }
+}
+
+.alertbox {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  line-height: 1;
+  width: 100%;
+  padding: 10px;
+  > article {
+    padding: 6px;
+    position: relative;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    @include alert-type(#8a6d3b, #faebcc, rgba(252, 248, 227, .96));
+    -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, .1);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, .1);
+    > p {
+      margin: 0;
+      width: 100%;
+      padding-right: 30px;
+      line-height: 1.2;
+    }
+    > button {
+      position: absolute;
+      right: 10px;
+      top: 3px;
+    }
+  }
+  .alert-error {
+    @include alert-type(#fff, #f44e51, rgba(244, 78, 81, .96));
+    //@include alert-type(#d00, #f5cab3, rgba(246, 207, 183, .9));
+  }
+
+  .alert-warning {
+    @include alert-type(#fff, #f90, rgba(255, 153, 0, .96));
+  }
+
+  .alert-info {
+    @include alert-type(#333, #eee, rgba(255, 255, 255, .96));
+  }
+
+  .alert-success {
+    @include alert-type(#fff, #28bd8b, rgba(40, 189, 139, .96));
+    //@include alert-type(#28bd8b, #d1ebca, rgba(217, 237, 205, .9));
+
+    animation: mymove 5s infinite;
+    -webkit-animation: mymove 5s infinite;
+
+  }
+}
+
+#popalert {
+  position: absolute;
+  z-index: 999999999;
+  top: 40%;
+  left: 50%;
+  font-size: 18px;
+  width: 500px;
+  margin: 0 0 10px -250px;
+
+  > p {
+    padding: 10px 15px;
+    background-color: rgba(250, 250, 250, 0.9);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom:5px;
+  }
+}

@@ -1,0 +1,46 @@
+
+.frame-main {
+  //min-width: 950px;
+  height: 695px;
+}
+
+.frame-side {
+  width: 320px;
+}
+
+.frame-side-small {
+  width: 280px;
+}
+
+.frame-monitor {
+  width: 200px;
+}
+
+//监控页
+.monitorPages {
+  padding-left: 200px;
+  .wrapper {
+    min-width: 1000px;
+    .frame-main {
+        //min-width: 800px;
+    }
+    .frame-side {
+      width: 280px;
+      .camera-view {
+        width: 280px;
+        height: 210px;
+      }
+      .msg_input {
+        input {
+          width: 225px;
+        }
+      }
+    }
+  }
+  .header {
+    padding-right: 290px;
+    .chunk {
+      width: 280px;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+.icon-img {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  display: inline-block;
+  line-height:1;
+  vertical-align: middle;
+}
+
+.icon-img:before {
+  content: "";
+  display: inline-block;
+  @include box(20px);
+  background: transparent none no-repeat center center;
+  background-size: cover;
+  vertical-align: top;
+}
+
+.icon_message:before {
+  background-image: url("../icons/icon_message.png")
+}
+
+.icon_headset:before {
+  background-image: url("../icons/icon_headset.png")
+}
+
+.icon_time:before {
+  background-image: url("../icons/icon_time.png");
+  vertical-align: middle;
+}
+
+.icon_star:before {
+  background-image: url("../icons/icon_star.png")
+}
+.icon_star.on:before {
+  background-image: url("../icons/icon_star_on.png")
+}
+
+.icon_study:before {
+  background-image: url("../icons/icon_study.png")
+}
+
+.icon_pen:before {
+  background-image: url("../icons/icon_pen.png")
+}
+
+.icon_eraser:before {
+  background-image: url("../icons/icon_eraser.png")
+}
+
+.icon_left:before {
+  background-image: url("../icons/icon_left.png")
+}
+
+.icon_down:before {
+  background-image: url("../icons/icon_down.png");
+  float: right;
+}
+
+.icon_right:before {
+  background-image: url("../icons/icon_right.png")
+}
+
+.icon_camera:before {
+  background-image: url("../icons/icon_camera.png")
+}
+
+.icon_mic:before {
+  background-image: url("../icons/icon_mic.png")
+}
+
+.icon_webcam:before {
+  background-image: url("../icons/icon_webcam.png")
+}
+
+.icon_config:before {
+  background-image: url("../icons/icon_config.png")
+}
+
+.icon_bookmark:before {
+  background-image: url("../icons/icon_bookmark.png")
+}
+
+.icon_more:before {
+  background-image: url("../icons/icon_more.png")
+}
+
+.icon_complain:before {
+  background-image: url("../icons/icon_complain.png")
+}
+
+.icon_op_max:before {
+  background-image: url("../icons/icon_op_max.png");
+  width: 23px;
+  height: 23px;
+}
+
+.icon_op_small:before {
+  background-image: url("../icons/icon_op_small.png");
+  width: 23px;
+  height: 23px;
+}
+
+.icon_op_close:before {
+  background-image: url("../icons/icon_op_close.png");
+  width: 23px;
+  height: 23px;
+}

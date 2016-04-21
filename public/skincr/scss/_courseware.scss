@@ -1,0 +1,275 @@
+.main {
+  position: relative;
+  background-color: #e2e7ec;
+  border-radius: 0 0 5px 5px;
+  padding-bottom: 45px;
+}
+
+//课件提示
+.courseware-tips {
+  width: 100%;
+  text-align: center;
+  background: #f4f7fa;
+  color: #f00;
+  font-size: 13px;
+  p {
+    padding: 10px;
+    margin: 0;
+  }
+}
+
+//课件展示区
+.courseware {
+  padding: 10px;
+  margin: 0 auto;
+  img {
+    width: 100%;
+  }
+  .coursesize{margin:0 auto}
+}
+
+.course-wrap {
+  position: relative;
+}
+
+.course-palette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .1);
+  width:100%;
+  height:100%;
+}
+
+//底部课件操作
+.operation-panel {
+  width: 100%;
+  height: 45px;
+  padding: 7px 10px 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: $silver;
+  @include radius(0 0 $border-radius $border-radius);
+  //按钮
+  button, .drowbord span {
+    display: inline-block;
+    padding: 0;
+    border: 0;
+    line-height: 30px;
+    cursor: pointer;
+  }
+  button {
+    &:hover {
+      background-color: $button-hover-color;
+    }
+  }
+  //图标
+  .icon-img:before {
+    margin: 5px;
+  }
+  //模块
+  .operation-part {
+    margin-right: 7px;
+    background: $white;
+    border: $border-default;
+    border-radius: $border-radius;
+    &:last-child {
+      margin-right: 0;
+    }
+    .icon_study,
+    .icon_pen {
+      margin: 0 5px;
+    }
+    &.change,
+    &.btn-bookmark {
+      button {
+        padding: 0 8px;
+      }
+      .icon_bookmark {
+        color: $red;
+      }
+    }
+    &.btn-eraser,
+    &.add_star {
+      button {
+        @include box(30px);
+      }
+
+    }
+  }
+  .student {
+    height: 32px;
+    .switch {
+      float: left;
+      padding: 2px 10px 0 14px;
+    }
+  }
+  .drowbord {
+    height: 32px;
+    .pen_size {
+      height: 30px;
+      padding: 2px 10px 0 14px;
+      line-height: 30px;
+      border-right: 1px #ddd dotted;
+      .size {
+        width: 16px;
+        height: 16px;
+        margin-left: 1px;
+        @include radius(50%);
+        position: relative;
+        border: 1px rgba(0, 0, 0, 0.1) solid;
+        &:hover,
+        &.active {
+          border-color: #f44e51;
+          &:before {
+            background-color: #f44e51;
+          }
+        }
+        &:before {
+          content: '';
+          position: absolute;
+          background-color: #666;
+          @include radius(50%);
+        }
+        &.veryfine:before {
+          @include box(4px);
+          top: 5px;
+          left: 5px;
+        }
+        &.fine:before {
+          @include box(6px);
+          top: 4px;
+          left: 4px;
+        }
+        &.thick:before {
+          @include box(8px);
+          top: 3px;
+          left: 3px;
+        }
+        &.verythick:before {
+          @include box(12px);
+          top: 1px;
+          left: 1px;
+        }
+      }
+
+    }
+    .pen_color {
+      height: 30px;
+      padding: 2px 10px 0;
+      line-height: 30px;
+
+      .color {
+        width: 20px;
+        height: 14px;
+        margin: 0 2px;
+        border-radius: 0;
+        padding: 0;
+        border: 2px solid transparent;
+        &:last-child {
+          margin-right: 0;
+        }
+        &:hover {
+          border-color: #794d0f;
+        }
+        &.active {
+          border-color: #794d0f;
+        }
+        //  color
+        &.red {
+          background-color: #f00;
+        }
+        &.yellow {
+          background-color: #ff0;
+        }
+        &.green {
+          background-color: #0f0;
+        }
+        &.cyan {
+          background-color: #0ff;
+        }
+        &.blue {
+          background-color: #00f;
+        }
+        &.magenta {
+          background-color: #f0f;
+        }
+        &.orange {
+          background-color: #f90;
+        }
+      }
+    }
+    //画板禁止状态
+    &.off {
+      -webkit-filter: grayscale(100%);
+      -moz-filter: grayscale(100%);
+      -ms-filter: grayscale(100%);
+      -o-filter: grayscale(100%);
+      position: relative;
+      cursor: not-allowed;
+      &:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 30px;
+        background-color: transparent;
+        z-index: 999;
+      }
+    }
+  }
+  .change {
+    button {
+      color: #999;
+    }
+  }
+  .pages {
+    .pages-left,
+    .pages-right,
+    .pages-number {
+      float: left;
+    }
+    .pages-number {
+      color: #666;
+      vertical-align: top;
+      text-decoration: none;
+      select {
+        border-top: 0;
+        border-bottom: 0;
+        width: 80px;
+        line-height: 30px;
+        &:hover {
+          background-color: $button-hover-color;
+        }
+      }
+    }
+  }
+}
+
+//操作区图标
+.operation-icon {
+  width: 40px;
+  height: 30px;
+  position: relative;
+  background: #e9edf2;
+  border-right: $border-default;
+  &:before {
+    content: '';
+    position: absolute;
+    border: 8px solid transparent;
+    top: 7px;
+    left: 39px;
+    border-left-color: #e2e7ec;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    border: 8px solid transparent;
+    top: 7px;
+    left: 38px;
+    border-left-color: #e9edf2;
+  }
+}

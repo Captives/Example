@@ -1,0 +1,135 @@
+@media screen and (max-width: 1024px) {
+  body {
+    //sidebar侧边栏
+    .frame-side{
+      width: 210px;
+    }
+    .mod-webcam .camera-view{
+      width: 210px;
+      height: 158px;
+    }
+    .mod-webcam video{
+      width: 100%;
+      height: auto;
+    }
+    .mod-webcam .mod-webcam-setup .config-bar .mic_vol{
+      width: 50px;
+    }
+    .sidebar .mod-chat .mod-msg{
+      border-radius: 0 0 5px 5px;
+    }
+    .msg_input{
+      height: 0;
+      overflow: hidden;
+    }
+    //私聊输入框显示
+    .chatmodal{
+      .msg_input{
+        height: auto;
+      }
+    }
+    //header 头部调整
+    .header{
+      padding-right: 220px;
+      .chunk{
+        width: 210px;
+        .star .icon-img:before{
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    //学生课件操作面板
+    .operation-panel{
+      height: 70px;
+      .operation-icon{
+        width: 55px;
+        height: 57px;
+        &:before,&:after{
+          left: 54px;
+          top: 18px;
+          border-width: 10px;
+        }
+        &:after{
+          left: 53px;
+        }
+      }
+      .operation-part .icon_pen{
+        margin: 5px;
+        &:before{
+          width: 35px;
+          height: 35px;
+        }
+      }
+      .operation-part.btn-eraser button{
+        width: 55px;
+        height: 55px;
+        padding-top: 5px;
+        &:before{
+          width: 35px;
+          height: 35px;
+        }
+      }
+      .drowbord{
+        height: 57px;
+        .pen_size{
+          height: 55px;
+          padding-top: 5px;
+          line-height: 55px;
+          .size{
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            &.veryfine:before{
+              left: 7px;
+              top: 7px;
+            }
+            &.fine:before{
+              left: 6px;
+              top: 6px;
+            }
+            &.thick:before{
+              left: 5px;
+              top: 5px;
+            }
+            &.verythick:before{
+              left: 3px;
+              top: 3px;
+            }
+          }
+        }
+        .pen_color{
+          height: 55px;
+          line-height: 55px;
+          .color{
+            width: 30px;
+            height: 20px;
+            margin: 0 5px;
+          }
+        }
+      }
+      //翻页
+      button{
+        line-height: 55px;
+      }
+      .icon_left:before, .icon_right:before{
+        width: 30px;
+        height: 30px;
+        margin-top: 13px;
+      }
+      .pages .pages-number select{
+        width: 100px;
+        line-height: 55px;
+        background-size: 30px;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+//鼠标样式
+body.studentPages{
+  #contentGroup canvas {
+    cursor: url("../../assets/cs.png"), default !important;
+  }
+}

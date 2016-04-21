@@ -1,0 +1,28 @@
+.sidebar {
+  .mod-warning {
+    .cont {
+      width: 100%;
+      padding: $gap;
+      background: $red;
+      color: $white;
+      h4 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: bolder;
+      }
+      p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+    }
+  }
+  .mod-chat {
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+    .mod-msg {
+      width: 100%;
+      font-size: 12px;
+    }
+  }
+}

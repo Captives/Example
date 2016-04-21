@@ -1,0 +1,36 @@
+
+//鼠标样式
+body.teacherPages{
+  #contentGroup canvas {
+    cursor: url("../../assets/ct.png"), default !important;
+  }
+}
+
+//私聊窗口
+.prvchat.chatmodal{
+  overflow: hidden;
+  display: block;
+  margin-left: 0;
+  margin-top: 0;
+  width: 600px;
+  max-height: 642px;
+  top: 150px;
+  left: 300px;
+  .modal-header{
+    cursor: move;
+    .title{
+      float: left;
+    }
+    .operation span {
+      float: right;
+      cursor: pointer;
+    }
+  }
+  moz-user-select: -moz-none;
+  -moz-user-select: none;
+  -o-user-select:none;
+  -khtml-user-select:none;
+  -webkit-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}

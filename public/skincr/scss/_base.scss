@@ -1,0 +1,201 @@
+html, body {
+  height: 100%;
+}
+
+html {
+  font-size: $global-font-size;
+  box-sizing: border-box;
+}
+
+// Set box-sizing globally to handle padding and border widths
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+// Default body styles
+body {
+  padding: 0;
+  margin: 0;
+  font-family: $body-font-family;
+  font-weight: $global-weight-normal;
+  line-height: $global-lineheight;
+  color: $body-font-color;
+  background: $body-background;
+  //overflow: hidden;
+  @if ($body-antialiased) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+img {
+  // Grid defaults to get images and embeds to work properly
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+
+  // Get rid of gap under images by making them display: inline-block; by default
+  display: inline-block;
+  vertical-align: middle;
+}
+
+// Make sure textarea takes on height automatically
+textarea {
+  height: auto;
+  min-height: 50px;
+  border-radius: $global-radius;
+}
+
+// Make select elements are 100% width by default
+select {
+  width: 100%;
+  border-radius: $global-radius;
+}
+
+// Styles Google Maps and MapQuest embeds properly
+// scss-lint:disable IdSelector
+#map_canvas,
+.map_canvas,
+.mqa-display {
+  img,
+  embed,
+  object {
+    max-width: none !important;
+  }
+}
+
+// Reset <button> styles created by most browsers
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: $global-radius;
+  line-height: 1;
+}
+
+a, input, button, select {
+  outline: 0;
+}
+
+// Internal classes to show/hide elements in JavaScript
+.is-visible {
+  display: block !important;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+//对齐
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.mb10{margin-bottom:10px;}
+
+.clearfix,
+.modal-header,
+.modal-footer {
+  &:after, &:before {
+    display: table;
+    content: " ";
+    clear: both
+  }
+}
+
+//color style
+.white {
+  color: $white;
+}
+
+.black {
+  color: $black;
+}
+
+.red {
+  color: $red;
+}
+
+.blue {
+  color: $blue;
+}
+
+.green {
+  color: $green;
+}
+
+.grey {
+  color: $grey;
+}
+
+.silver {
+  color: $silver;
+}
+
+.yellow {
+  color: $yellow;
+}
+
+// close style
+.close {
+  color: #000;
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=30);
+  opacity: .3;
+}
+
+.close:hover,
+.close:focus {
+  text-decoration: none;
+  cursor: pointer;
+  filter: alpha(opacity=80);
+  opacity: .8;
+}
+
+button.close {
+  -webkit-appearance: none;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+}
+
+.wrapper {
+  width: 100%;
+  //min-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+  overflow: hidden;
+}
+
+//animate
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity .3s linear;
+  -o-transition: opacity .3s linear;
+  transition: opacity .3s linear;
+}
+.fade.in {
+  opacity: 1;
+}
+
+
+//背景色
+.bg-red{
+  background: #f44e51;
+}
+.bg-grey{
+  background: #c1c1c1;
+}

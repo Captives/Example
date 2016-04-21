@@ -1,0 +1,217 @@
+p{ margin: 0;}
+
+.frame-monitor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, .6);
+  border-right: 1px solid rgba(0, 0, 0, .8);
+}
+
+//左侧栏设备详情
+.monitor-wrap{
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  .monitor-header{
+    text-align: center;
+    margin: 10px;
+    line-height: 30px;
+    color: rgba(255,255,255,0.8);
+  }
+  p{
+    margin: 10px 0;
+    color: rgba(255,255,255,0.8);
+  }
+  .facility-info{
+    border-top: 1px #fff solid;
+    padding: 10px 0;
+    margin-top: 15px;
+    .facility-box{
+      margin-top: 10px;
+      select{
+        border-radius: 3px;
+        padding: 6px 10px;
+        font-size: 14px;
+        color: #666;
+        border: none;
+      }
+      label{
+        margin: 0 5px;
+      }
+    }
+  }
+  .but-group{
+    margin-top: 50px;
+    button{
+      width: 100%;
+      border-radius: 5px;
+      padding: 10px;
+      color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.4);
+      margin: 5px 0;
+      &:hover{
+        background: rgba(255,255,255,0.35);
+      }
+      &.bg-red{
+        background: #f44e51;
+        &:hover{
+          background: #e64649;
+        }
+      }
+    }
+  }
+}
+
+//弹层
+.camera-view:hover .webcam-popup-box{
+  display: block;
+}
+.webcam-popup-box{
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 210px;
+  padding: 15px 10px;
+  background: rgba(255,255,255,0.8);
+  z-index: 11;
+  font-size: 14px;
+  .debug{
+    width: 100%;
+    margin: 5px 0;
+    label{
+      color: #f44e51;
+    }
+    &.but-wrap{
+      margin-top: 20px;
+      text-align: center;
+      span{
+        color: #f44e51;
+      }
+      .button{
+        border-radius: 3px;
+        padding: 6px 15px;
+        color: rgba(255,255,255,0.8);
+        background: #274969;
+        margin: 10px;
+        text-decoration: none;
+        cursor: pointer;
+        &:hover{
+          background: #226494;
+        }
+      }
+    }
+  }
+}
+
+
+//滑块
+input[type="range"] {
+  //-webkit-box-shadow: 0 1px 0 0px #424242, 0 1px 0 #060607 inset, 0px 2px 10px 0px black inset, 1px 0px 2px rgba(0, 0, 0, 0.4) inset, 0 0px 1px rgba(0, 0, 0, 0.6) inset;
+  margin-top: 2px;
+  background-color: #46ac02;
+  border-radius: 15px;
+  width: 75%;
+  -webkit-appearance: none;
+  height:10px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  cursor: default;
+  top: 5px;
+  height: 20px;
+  width: 10px;
+  transform: translateY(0);
+  background: none repeat scroll 0 0 #777;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 -1px 1px black inset;
+}
+
+//视频信息数据
+.webcam-info{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 10px;
+  background: rgba(255,255,255,0.5);
+  font-size: 14px;
+  span{
+    width: 50%;
+  }
+}
+
+//服务器节点
+.mod-server{
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -73px;
+  padding: 10px 0;
+  background: #212c41;
+  z-index: 1;
+  .node{
+    margin-bottom: 5px;
+    button{
+      color: rgba(255,255,255,0.8);
+      margin: 0 10px;
+      padding: 5px 10px;
+      border-radius: 3px;
+      font-size: 14px;
+      background: #274969;
+      &:hover{
+        background: #226494;
+      }
+    }
+  }
+  .server{
+    select{
+      width: 78%;
+      font-size: 14px;
+      border-radius: 3px;
+      padding: 2px 5px;
+    }
+  }
+  label{
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);;
+  }
+}
+
+//鼠标样式
+body.monitorPages{
+  #contentGroup canvas {
+    cursor: url("../../assets/ca.png"), default !important;
+  }
+}
+
+//私聊面板切换
+.modal-header.tabs-nav{ padding-bottom: 0;}
+.tab-content .active{ display: none;}
+.nav-tabs{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  a{
+    width: 100px;
+    overflow: hidden;
+    float: left;
+    text-align: center;
+    background: #ababab;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 5px 5px 0 0;
+    border-right: 1px #fff solid;
+  }
+  .active{
+    a{
+      background: #f44e51;
+    }
+  }
+}

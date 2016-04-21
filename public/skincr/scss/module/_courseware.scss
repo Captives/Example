@@ -1,0 +1,84 @@
+
+.module-couresware {
+  background-color: #ececec;
+  padding:0;
+  .couresware-list {
+    overflow: auto;
+    padding: 0;
+    font-size: 12px;
+    height: 374px;
+    overflow-y: auto;
+    margin:0;
+    padding:10px;
+
+    li {
+      list-style: none;
+      width: 24%;
+      height: 162px;
+      overflow: hidden;
+      float: left;
+      text-align: center;
+      padding: 8px;
+      position: relative;
+      background-color: #fff;
+      margin: 0 .5% 2%;
+      cursor: pointer;
+      &:hover {
+        background-color: #fafafa;
+        box-shadow: 1px 2px 2px rgba(50, 50, 50, .1);
+        label {
+          display: block;
+        }
+      }
+      label {
+        display: none;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        color: #fff;
+        padding: 20px 8px 4px;
+        background-color: rgba(0, 0, 0, .6);
+        text-align: center;
+        line-height: 24px;
+        font-size: 18px;
+        z-index: 9;
+      }
+      &.original {
+        background-color: #2170a8;
+        .name {
+          color: #fff;
+        }
+      }
+      &.current {
+        background-color: #f44e51;
+        .name {
+          color: #fff;
+        }
+      }
+      &.done {
+        background-color: #ddd;
+        img {
+          filter: Gray;
+          -webkit-filter: grayscale(100%);
+        }
+      }
+    }
+    a {
+      color: #666;
+      text-decoration: none;
+    }
+
+    img, label {
+      width: 100%;
+      min-height: 105px;
+      max-height: 110px;
+      overflow: hidden;
+    }
+    .name {
+      margin-top: 5px;
+      height: 36px;
+      line-height: 18px;
+      overflow: hidden;
+    }
+  }
+}

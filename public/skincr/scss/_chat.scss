@@ -1,0 +1,124 @@
+//聊天区
+.mod-chat {
+  .mod-msg {
+    overflow: auto;
+    padding: $gap;
+    background: #e2e7ec;
+    //信息时间
+    .system_time {
+      text-align: center;
+      margin: 0 auto 5px auto;
+      max-width: 50%;
+      span {
+        height: 16px;
+        line-height: 14px;
+        display: inline-block;
+        background-color: #f3f5f7;
+        font-size: 11px;
+        padding: 1px 18px;
+        color: rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        -moz-border-radius: 15px;
+        -webkit-border-radius: 15px
+      }
+    }
+    .message {
+      display: block;
+      margin: 0 0 10px 0;
+      &:before,
+      &:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      //头像
+      .photo {
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+      //信息框
+      .info {
+        display: inline-block;
+        max-width: 65%;
+        font-size: 14px;
+        line-height: 1.25;
+        text-align: left;
+        padding: 8px 10px;
+        background: #fff;
+        border-radius: 5px;
+        position: relative;
+        margin-top: 5px;
+        word-wrap:break-word;
+        word-break:break-all;
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          top: 8px;
+          border: 5px solid transparent;
+        }
+      }
+    }
+    .msg-left {
+      //float: left;
+      .photo {
+        float: left;
+        margin-right: 12px;
+      }
+      .info {
+        float: left;
+        &:before {
+          left: -9px;
+          border-right-color: #fff;
+        }
+      }
+    }
+    .msg-right {
+      //float: right;
+      .photo {
+        float: right;
+        margin-left: 12px;
+      }
+      .info {
+        float: right;
+        background: #15a4fb;
+        color: #fff;
+        &:before {
+          right: -9px;
+          border-left-color: #15a4fb;
+        }
+      }
+    }
+  }
+  //输入框
+  .msg_input {
+    width: 100%;
+    input {
+      width: 250px;
+      height: 45px;
+      margin: 0;
+      border-radius: 0;
+      padding: 10px;
+      border: none;
+    }
+    button {
+      width: 70px;
+      height: 45px;
+      border-radius: 0;
+      padding: 10px;
+      font-size: 12px;
+      border: none;
+      color: #fff;
+      background: #28bd8b;
+      &:enabled:active {
+        color: #fff;
+        background-color: #20976f;
+      }
+      &:disabled {
+        opacity: .6;
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+
+h1, h2, h3, h4, h5, h6, dl, dt, dd {
+  margin: 0;
+}
+
+.modal-body {
+  .module-help {
+    padding: 0 25px;
+    .title {
+      font-weight: 600;
+      margin: 10px 0;
+    }
+    .tip-group {
+      dl {
+        font-size: 14px;
+        color: #666;
+        list-style: disc;
+        dt {
+          font-size: 18px;
+          font-weight: 600;
+          color: #333;
+          margin: 5px 0;
+          &.icon-small:before {
+            width: 15px;
+            height: 15px;
+            margin-right: 5px;
+          }
+        }
+        dd {
+          margin-bottom: 20px;
+        }
+      }
+    }
+    .else-group {
+      margin-top: 30px;
+      .radio-group {
+        label {
+          margin: 0 10px;
+          input {
+            margin-right: 5px;
+          }
+        }
+      }
+      .but-group {
+        text-align: center;
+        margin-top: 20px;
+        button {
+          padding: 15px 20px;
+          margin: 10px;
+          color: #fff;
+          border-radius: $border-radius;
+        }
+      }
+    }
+  }
+}
+
+.green {
+  background: $success-color;
+}
+
+.blue {
+  background: $primary-color;
+}

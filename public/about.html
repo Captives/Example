@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1″ user-scalable=no">
+    <title>房间管理</title>
+    <link rel="alternate icon" type="image/png" href="assets/favicon.ico">
+    <link rel="stylesheet" href="skincr/css/common.css">
+    <link rel="stylesheet" href="http://bootswatch.com/flatly/bootstrap.min.css"/>
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .title{
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid title">
+        <h3>在线房间列表</h3>
+    </div>
+</nav>
+
+<div id="rooms" class="panel-body">
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr class="success">
+                <th class="col-md-2 col0">Room</th>
+                <th class="col-md-2 col1">序号</th>
+                <th class="col-md-2 col2">登入时间</th>
+                <th class="col-md-2 col3">标识ID</th>
+                <th class="col-md-4 col4">登入数据</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+
+<div id="table" class="panel-body">
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr class="info">
+                <th class="col-md-2 col0">序号</th>
+                <th class="col-md-2 col1">登入时间</th>
+                <th class="col-md-2 col2">Room</th>
+                <th class="col-md-2 col3">标识ID</th>
+                <th class="col-md-4 col4">登入数据</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+</body>
+
+<!--<script src="skincr/js/lib/jquery.min.js"></script>-->
+<script src="skincr/js/lib/EventEmitter.min.js"></script>
+<script src="skincr/js/lib/sweetalert.min.js"></script>
+<script src="skincr/js/service/phpAction.js"></script>
+<script src="skincr/js/service/common.js"></script>
+<script>
+    $(document).ready(function(){
+        var url = "ws://" + window.location.hostname + ":" + window.location.port + "/single";
+        var ws = new WebSocket(url);
+        ws.onopen = function(){
+            ws.send(JSON.stringify({
+                eventName:"join",
+                data:{
+                    room:"0000",
+                    userdata:{userId:"8888",userName:"监控",userType:3}
+                }
+            }));
+        };
+
+        ws.onmessage = function(message){
+            var json = JSON.parse(message.data);
+
+        };
+
+        ws.onclose = function(){
+
+        };
+
+        ws.onerror = function(error){
+
+        };
+
+
+        var service = new MonitorService();
+        service.getSocketlist();
+        service.on(service.COMPLETE,function(json){
+            for (var item in json['list']){
+                createSocketRow(Number(item) + 1,json['list'][item],
+                 function(event,item){
+                     Alert.swal("确认把" + JSON.stringify(item)+"从教室踢出吗？","踢出教室","success",null, function () {
+                         var ser = new MonitorService();
+                            ser.offline(item.id);
+                            ser.on(ser.COMPLETE,function(json){
+                                Alert.swal("踢出成功"+json,"已下线","success",2000);
+                            });
+                     });
+//                        var w = new Window();
+//                        var pw = w.alert("确认注销<br>" + item.id
+//                                +"<br>" + JSON.stringify(item.userdata)+"<br>"
+//                            +"用户吗","注销","确认注销",
+//                        function(event){
+//                            var ser = new MonitorService();
+//                            ser.offline(item.id);
+//                            ser.on(ser.COMPLETE,function(json){
+//                                console.log(json);
+//                            });
+//                            w.removeItem(event);
+//                    });
+                });
+            }
+
+            for(var i in json.rooms){
+                createRoomSocket(i,json.rooms[i]);
+            }
+        });
+    });
+
+    function createSocketRow(index,item,callback){
+        var col0 = document.createElement("td");
+        col0.setAttribute("class","col0");
+        var col1 = document.createElement("td");
+        col1.setAttribute("class","col1");
+        var col2 = document.createElement("td");
+        col2.setAttribute("class","col2");
+        var col3 = document.createElement("td");
+        col3.setAttribute("class","col3");
+        var col4 = document.createElement("td");
+        col4.setAttribute("class","col4");
+        var row = document.createElement("tr");
+//        row.setAttribute("class","info");
+
+        col3.onclick = function(event){
+            callback(event, item);
+        };
+
+        col0.innerHTML = "No." + index;
+        col1.innerHTML = getFormatDate(item.time);
+        col2.innerHTML = item.room;
+        col3.innerHTML = item.id;
+        col4.innerHTML = JSON.stringify(item.userdata);
+
+        row.appendChild(col0);
+        row.appendChild(col1);
+        row.appendChild(col2);
+        row.appendChild(col3);
+        row.appendChild(col4);
+        document.querySelector("#table tbody").appendChild(row);
+    }
+
+    function createRoomSocket(room,rooms){
+        for(var i in rooms){
+            var item = rooms[i];
+
+            var col0 = document.createElement("td");
+            col0.setAttribute("class","col0");
+            var col1 = document.createElement("td");
+            col1.setAttribute("class","col1");
+            var col2 = document.createElement("td");
+            col2.setAttribute("class","col2");
+            var col3 = document.createElement("td");
+            col3.setAttribute("class","col3");
+            var col4 = document.createElement("td");
+            col4.setAttribute("class","col4");
+
+            var row = document.createElement("tr");
+//            row.setAttribute("class","info");
+
+            if(Number(i) === 0){
+                col0.innerHTML = room;
+            }else{
+                col0.innerHTML = ".";
+            }
+
+            console.log(room,i,item.time,item.id,item.userdata);
+
+            col1.innerHTML = "No." + (Number(i)+1);
+            col2.innerHTML = getFormatDate(item.time);
+            col3.innerHTML = item.id;
+            col4.innerHTML = JSON.stringify(item.userdata);
+
+            row.appendChild(col0);
+            row.appendChild(col1);
+            row.appendChild(col2);
+            row.appendChild(col3);
+            row.appendChild(col4);
+            row.setAttribute("id","row_" + item.id);
+            document.querySelector("#rooms tbody").appendChild(row);
+        }
+    };
+</script>
+</html>

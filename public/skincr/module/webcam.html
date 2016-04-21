@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title">与IT技术视频</h4>
+</div>
+<div class="modal-body">
+    <!--detail-->
+    <div class="module-webcam">
+        <div class="mod-webcam">
+            <div class="camera-view">
+                <!--学生视频--尺寸 320x240 -->
+                <img src="skincr/images/webcam_student.jpg" alt="视频窗口">
+                <div class="webcam-name">Student:David</div>
+            </div>
+            <!--视频控制-->
+            <div class="mod-webcam-setup">
+                <div class="config-bar clearfix">
+                    <!--设备状态-->
+                    <div class="cofig_left fl">
+                        <button class="icon-img icon_camera" disabled></button>
+                        <button class="icon-img icon_mic" disabled></button>
+                        <i class="mic_vol">
+                            <span class="active" style="width:30%;"></span>
+                        </i>
+                    </div>
+                    <!--视频操作-->
+                    <div class="config_right fr hint-position-right">
+                        <a class="hint-top hint-warning" data-hint="打开/关闭摄像头">
+                            <button class="icon-img icon_webcam"></button>
+                        </a>
+                        <a class="hint-top" data-hint="设置" data-toggle="modal" data-target="#modalDetail"
+                           href="skincr/module/setup.html">
+                            <button class="icon-img icon_config"></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//detail-->
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>

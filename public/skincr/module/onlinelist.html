@@ -1,0 +1,77 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="onlineTitle modal-title">在线-人</h4>
+</div>
+<div class="modal-body">
+    <!--detail-->
+    <div class="module-onlinelist">
+        <table width="100%">
+            <tr>
+                <th width="10%">ID</th>
+                <th width="35">登陆姓名</th>
+                <th width="10">身份</th>
+                <th width="10%">登陆时间</th>
+                <th width="30%">设备</th>
+            </tr>
+        </table>
+    </div>
+    <!--//detail-->
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+
+<script type="application/javascript">
+    function addItem(id, user, time, type){
+        document.querySelector(".onlineTitle").innerText = "在线" + Object.keys(singleRoom.userList).length + "人";
+        var tr = document.createElement("tr");
+        tr.setAttribute("id", "u" + id);
+
+        var td1 = document.createElement("td");
+        td1.innerText = user.userId;
+
+        var td2 = document.createElement("td");
+        td2.innerText = user.userName;
+
+        var td3 = document.createElement("td");
+        td3.innerText = UserType.message(user.userType);
+
+        var td4 = document.createElement("td");
+        td4.innerText = getFormatDate(time);
+
+        var td5 = document.createElement("td");
+        td5.setAttribute("title",devInfo(type));
+        td5.innerText = devInfo(type)[0];
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+        document.querySelector(".module-onlinelist table").appendChild(tr);
+    }
+
+    function removeItem(id){
+        var item = document.getElementById("u" + id);
+        if(item){
+            item.parentNode.removeChild(item);
+        }
+    }
+
+    var list = singleRoom.userList;
+    for(var key in list){
+        addItem(key, list[key].user,list[key].time, list[key].type);
+    }
+
+    singleRoom.on("add_user",function(user,id,time,type){
+        console.log("--------aa user",user,id,time,type);
+        addItem(id, user, time, type);
+    });
+
+    singleRoom.on("remove_user", function(userId,id){
+        removeItem(id);
+        document.querySelector(".onlineTitle").innerText = "在线" + Object.keys(singleRoom.userList).length + "人";
+    });
+</script>

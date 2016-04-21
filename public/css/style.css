@@ -1,0 +1,358 @@
+/********************************************
+**     全局属性样式
+*********************************************/
+html, body {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+   /** background-color: #181818;**/
+    background: #008080;
+    font-size:14px;
+    font-style:normal;
+    color:#FFFFFF;
+    font-family:Palatino, serif, "微软雅黑", "Palatino Linotype", "Book Antiqua";
+    cursor:default;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    position:absolute;
+    background: #333333;
+    height: 50px;
+    width: 100%;
+    margin: 0;
+}
+
+.content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50px;
+}
+
+input,select{
+    width: 150px;
+    font-size: 16px;
+}
+
+.debug{
+    background: #FF8000;
+    text-align: left;
+    overflow: auto;
+    max-height: 60%;
+    font-size:2em;
+    padding-left:20px;
+}
+
+/********************************************
+**      类样式
+*********************************************/
+.login-label{
+    width: 65px;
+    color: #FFFFFF;
+}
+
+.userList{
+    position: absolute;
+    width: 300px;
+    height: 70%;
+    padding: 5px;
+}
+
+.mainGroup{
+    position: absolute;
+    background: #ea6e0c;
+    width: 1320px;
+    height: 710px;
+    left: 50%;
+    top: 50%;
+    margin-left: -660px;
+    margin-top: -355px;
+    z-index: 99;
+}
+
+.videoGroup{
+    position: absolute;
+    width:360px;
+    height:480px;
+}
+
+.chatGroup {
+    position: absolute;
+    left: 0;
+    top: 480px;
+    bottom: 0px;
+    /**height: 190px;**/
+    width: 320px;
+    border-right:1px solid #0f0f0f;
+}
+
+.chatGroup .msgs{
+    position: absolute;
+    top: 0px;
+    bottom: 20px;
+    width: 320px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.chatGroup .msgs p{
+    margin: 0.3em 0;
+}
+
+.chatGroup .msgIpt{
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 250px;
+    height: 20px;
+}
+
+.chatGroup .sendBtn{
+    position: absolute;
+    left: 255px;
+    bottom: 0px;
+    width: 65px;
+    height: 25px;
+}
+
+.headGroup,.tipsGroup{
+    position: absolute;
+    width: 1000px;
+    height: 40px;
+    top: 0;
+    left:320px;
+}
+
+.tipsGroup{
+  top: 40px;
+}
+
+.tipsGroup span{
+    float: left;
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #FF0000;
+    font-weight: bold;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.contentGroup{
+    position: absolute;
+    top: 40px;
+    left:320px;
+    width:1000px;
+    height:625px;
+    /**cursor:url("./assets/cursor1.ani"),auto;**/
+    cursor:default;
+}
+
+.contentGroup canvas,.contentGroup .cursorGroup{
+    position: absolute;
+    cursor:default;
+    top: 0;
+    left: 0;
+}
+
+#drawGroup, #resCanvas{
+    position: absolute;
+    cursor:default;
+    top: 0px;
+}
+
+#cursorGroup{
+    position:absolute;
+    width:1000px;
+    height:625px;
+}
+
+.controlPanel{
+    position: absolute;
+    background: #8000FF;
+    width: 320px;
+    height: 240px;
+    left: 0px;
+    top: 0px;
+    border: solid 2px #fdfdfd;
+}
+.controlPanel input{
+    width: 200px;
+}
+
+.controlPanel .button{
+    width: 100px;
+}
+
+/********************************************
+**     ID样式
+*********************************************/
+.videoGroup video{
+    width:320px;
+    height:240px;
+}
+
+.videoGroup .item1{
+    position: absolute;
+    top:0px;
+    left:0px;
+    object-fit: scale-down;
+}
+
+.videoGroup .item2{
+    position: absolute;
+    top:240px;
+    left:0px;
+    object-fit: contain;
+}
+
+#camList,#micList{
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    width: 150px;
+}
+
+#micList{
+    left: 160px;
+}
+
+#toolBar{
+    position: absolute;
+    left:330px;
+    right:0px;
+    height:45px;
+    bottom: 0px;
+    text-align: center;
+}
+
+#toolBar input{
+    width: 60px;
+    text-align: center;
+}
+
+.headGroup span,.nameBar{
+    padding-left: 10px;
+    padding-right: 5px;
+    padding-top: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    height: 100%;
+}
+
+.headGroup span{
+    float: left;
+}
+.headGroup input{
+   margin-top: 10px;
+}
+
+.nameBar{
+    position: absolute;
+    height: 25px;
+    left: 0px;
+    width: 100%;
+    font-size: 18px;
+}
+
+.radio{
+    width: 18px;
+    height: 18px;
+}
+/********************************************
+**     全局弹出对话框统一样式表
+*********************************************/
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.panel{
+    width: 600px;
+    height: 300px;
+    background: #181818;
+    margin-left: -300px;
+    left: 50%;
+    position: absolute;
+    z-index: 99;
+}
+
+.panel_header{
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #111;
+    background: #E31836;
+    cursor: default;
+    float: left;
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: all-scroll;
+}
+
+.panel_content{
+    width: 100%;
+    height: calc(100% - 40px);
+    color: #FFFFFF;
+    padding: 0;
+    font-size: 18px;
+
+    padding-top: 30px;
+}
+
+.box_bar{
+    text-align: center;
+    background: #FF8000;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.panel_button{
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #77b55a), color-stop(1, #72b352));
+    background:-moz-linear-gradient(top, #77b55a 5%, #72b352 100%);
+    background:-webkit-linear-gradient(top, #77b55a 5%, #72b352 100%);
+    background:-o-linear-gradient(top, #77b55a 5%, #72b352 100%);
+    background:-ms-linear-gradient(top, #77b55a 5%, #72b352 100%);
+    background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77b55a', endColorstr='#72b352',GradientType=0);
+    background-color:#77b55a;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:9px 23px;
+    text-decoration:none;
+}
+
+.panel_button:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #72b352), color-stop(1, #77b55a));
+    background:-moz-linear-gradient(top, #72b352 5%, #77b55a 100%);
+    background:-webkit-linear-gradient(top, #72b352 5%, #77b55a 100%);
+    background:-o-linear-gradient(top, #72b352 5%, #77b55a 100%);
+    background:-ms-linear-gradient(top, #72b352 5%, #77b55a 100%);
+    background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#72b352', endColorstr='#77b55a',GradientType=0);
+    background-color:#72b352;
+}
+.panel_button:active {
+    position:relative;
+    top:1px;
+}
+/*********************************************/

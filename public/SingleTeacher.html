@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Teacher - Classroom - DaDaABC</title>
+    <!--css-->
+    <link rel="stylesheet" href="skincr/css/common.css">
+    <link rel="stylesheet" href="skincr/css/style.css">
+    <!--js-->
+    <script src="skincr/js/lib/switchery.min.js"></script>
+</head>
+<body class="teacherPages">
+<div class="wrapper">
+    <!--头部-->
+    <div class="header">
+        <div class="pack clearfix">
+            <div class="logo"><img src="skincr/images/logo.png" alt=""></div>
+            <!--课时-->
+            <div class="lesson-time">
+                <small>This Lesson is</small>
+                <p><span id="timeth" class="yellow">10</span> Minutes</p>
+            </div>
+            <!--教室操作-->
+            <div class="btnarea teacher clearfix">
+                <a class="hint-bottom" data-hint="Student information" data-toggle="modal" data-target="#modalDetail"
+                   href="skincr/module/student.html">
+                    <button class="border-radius-l">Student</button>
+                </a>
+                <a class="hint-bottom" data-hint="Courseware information" data-toggle="modal" data-target="#modalDetail"
+                   href="skincr/module/plan.html">
+                    <button>Plan</button>
+                </a>
+                <a class="hint-bottom btn-refresh" data-hint="Refresh classroom">
+                    <button>Refresh</button>
+                </a>
+                <a class="hint-bottom hint-warningn btn-classover"
+                   data-hint="Please mark the courseware before the class is over.">
+                    <button class="border-radius-r">Class over</button>
+                </a>
+            </div>
+            <!--附加操作-->
+            <div class="links">
+                <a id="helpButton" class="hint-bottom" data-hint="Request support"
+                   data-toggle="modal" data-backdrop="false"
+                   data-target="#modalDetail" href="skincr/module/helpTea.html">
+                    <button class="icon-img icon_message">HELP</button>
+                </a>
+
+                <a data-toggle="modal" data-target="#modalDetail" href="skincr/module/check.html">
+                    <button class="icon-img icon_headset">CHECK HEADSET</button>
+                </a>
+            </div>
+        </div>
+        <!--学生-->
+        <div class="chunk">
+            <div class="star fl " id="starsList" data-stars="0">
+                <i class="icon-img icon_star star1"></i>
+                <i class="icon-img icon_star star2"></i>
+                <i class="icon-img icon_star star3"></i>
+                <i class="icon-img icon_star star4"></i>
+                <i class="icon-img icon_star star5"></i>
+            </div>
+            <div class="total-time fr">
+                <i class="icon-img icon_time">0:00</i>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper-content clearfix">
+        <div class="main frame-main fl">
+            <!--课程提示-->
+            <div class="courseware-tips">
+                <p><span class="tiptext"></span></p>
+            </div>
+            <!--课件展示-->
+            <div class="courseware">
+                <!--课件信息提示-->
+                <div class="alertbox"></div>
+                <!--background
+                <img src="http://120.26.42.35/cover.jpg"/>
+                -->
+                <div id="contentGroup">
+                    <div id="cursorGroup" class="cursorGroup" style="display: none;">
+                        <img id="stuCur" src="./assets/cs.png"/>
+                        <img id="teaCur" src="./assets/ct.png"/>
+                        <span id="stuPoint">0,0</span>
+                    </div>
+                </div>
+                <!--
+                <img src="skincr/images/courseware.jpg" alt="课件">
+                 -->
+            </div>
+            <!--课件操作-->
+            <div class="operation-panel clearfix">
+                <div class="fl">
+                    <div class="operation-part student fl">
+                        <div class="operation-icon fl">
+                            <i class="icon-img icon_study"></i>
+                        </div>
+                        <!--学生画笔开关-->
+                        <div class="switch hint-top" data-hint="Open / close student brush">
+                            <input id="switchButton" class="switchery switch-anim" type="checkbox">
+                        </div>
+                    </div>
+                    <!--画板-->
+                    <div class="operation-part drowbord fl">
+                        <div class="operation-icon fl">
+                            <i class="icon-img icon_pen"></i>
+                        </div>
+                        <!--画笔尺寸-->
+                        <div class="hint-top pen_size fl" data-hint="pen size">
+                            <span class="size veryfine" pen-size="1"></span>
+                            <span class="size fine active" pen-size="3"></span>
+                            <span class="size thick" pen-size="6"></span>
+                            <span class="size verythick" pen-size="9"></span>
+                        </div>
+                        <!--画笔颜色-->
+                        <div class="hint-top pen_color fl" data-hint="pen color">
+                            <span class="color red active" pen-color="#ff0000"></span>
+                            <span class="color yellow" pen-color="yellow"></span>
+                            <span class="color orange" pen-color="orange"></span>
+                            <span class="color blue" pen-color="blue"></span>
+                        </div>
+                    </div>
+                    <!--清除画板-->
+                    <div class="operation-part fl hint-top btn-eraser" data-hint="Erase all">
+                        <button class="icon-img icon_eraser"></button>
+                    </div>
+                </div>
+                <div class="fr">
+                    <!--给学生加星hint-always-->
+                    <div class="operation-part add_star fl hint-top " data-hint="Encourage students">
+                        <button class="icon-img icon_star on" id="starButton"></button>
+                    </div>
+                    <!--课件翻页-->
+                    <div class="operation-part pages fl">
+                        <button id="preButton" class="pages-left icon-img icon_left"></button>
+                        <div class="pages-number">
+                            <select>
+                                <option>1/1</option>
+                            </select>
+                        </div>
+                        <button id="nextButton" class="pages-right icon-img icon_right"></button>
+                    </div>
+                    <!--更换课件-->
+                    <div class="operation-part change fl">
+                        <a href="#">
+                            <button id="courseChangeBtn">Change Courseware</button>
+                        </a>
+                    </div>
+                    <!--添加书签-->
+                    <div class="operation-part change fl hint-position-right">
+                        <a class="hint-top btn-bookmark" data-hint="Marking the progress of the class">
+                            <button class="icon-img icon_bookmark red">BOOKMARK</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--//课件操作-->
+        </div>
+        <!--侧栏-->
+        <div class="sidebar frame-side side-teacher fr">
+            <div class="mod-webcam">
+                <!--视频窗口-->
+                <div class="camera-view" id="view_box">
+                    <!--视频提示信息-->
+                    <div class="alertbox"></div>
+                    <!--学生视频--尺寸 320x240
+                    <img src="skincr/images/webcam_student.jpg" width="320" height="240">
+                    -->
+                    <video id="playVideo" width="320" height="240" autoplay="autoplay">您的浏览器不支持video</video>
+                    <div class="webcam-name offline">Student: David</div>
+                    <!--老师视频--尺寸 100x75 -->
+                    <div class="camera-view-teacher" id="webcamSelf">
+                        <!--
+                        <img src="skincr/images/webcam_teacher.jpg" width="100" height="75">
+                        -->
+                        <video id="liveVideo" width="100" height="75" autoplay="autoplay">您的浏览器不支持video</video>
+                    </div>
+                </div>
+                <!--视频控制-->
+                <div class="mod-webcam-setup">
+                    <div class="config-bar clearfix">
+                        <!--设备状态-->
+                        <div class="cofig_left fl">
+                            <span class="icon-img icon_camera" disabled></span>
+                            <span class="icon-img icon_mic" disabled></span>
+                            <i class="mic_vol">
+                                <span class="active" style="width: 50%"></span>
+                            </i>
+                        </div>
+                        <!--视频操作-->
+                        <div class="config_right fr hint-position-right">
+                            <!--<a class="hint-top hint-warning" data-hint="Turn on / off webcam">-->
+                             <div class="icon-img icon_webcam"></div>
+                            <!--</a>-->
+                            <a class="hint-top" data-hint="Setup" data-toggle="modal" data-target="#modalDetail"
+                               href="skincr/module/setup.html">
+                                <button class="icon-img icon_config"></button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mod-warning">
+                <div class="cont">
+                    <h4>WARNING</h4>
+                    <p>No notes from DaDaABC for this class!</p>
+                </div>
+            </div>
+            <div class="mod-chat">
+                <div class="mod-msg"></div>
+                <div class="msg_input clearfix">
+                    <input type="text" value="" class="fl" placeholder="Type your message">
+                    <button id="sendButton">SEND</button>
+                </div>
+            </div>
+        </div>
+        <!--//侧栏-->
+    </div>
+</div>
+
+<!--动态窗口-->
+<div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Ajax Content -->
+        </div>
+    </div>
+</div>
+
+<!--私聊窗口-->
+<div id="prvChatDiv" class="modal-content prvchat">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;
+        </button>
+        <h4 class="modal-title">和IT技术聊天</h4>
+    </div>
+    <div class="modal-body">
+        <!--detail-->
+        <div class="module-chatbox">
+            <div class="mod-chat">
+                <div class="mod-msg" style="min-height: 200px;max-height: 500px"></div>
+                <div class="msg_input clearfix">
+                    <input type="text" value="" class="fl" placeholder="请输入文字">
+                    <button class="sendButton">发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--课件列表-->
+<div id="courseList" class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;
+        </button>
+        <h4 class="modal-title">Change the class courseware
+            <small> this will replace the current courseware</small>
+        </h4>
+    </div>
+    <div class="modal-body module-couresware">
+        <!--detail-->
+        <ul class="couresware-list clearfix" style="max-height: 500px"></ul>
+        <!--//detail-->
+    </div>
+</div>
+<!--//动态窗口-->
+<!--js-->
+<script src="skincr/js/lib/jquery.min.js"></script>
+<script src="skincr/js/lib/adapter.js"></script>
+<script src="skincr/js/lib/common.js"></script>
+<script src="skincr/js/lib/sweetalert.min.js"></script>
+<script src="skincr/js/lib/EventEmitter.min.js"></script>
+<script src="skincr/js/lib/reconnecting-websocket.min.js"></script>
+
+<script type="text/javascript" src="js/ShareEvent.js"></script>
+<script type="text/javascript" src="skincr/js/service/common.js"></script>
+<script type="text/javascript" src="skincr/js/service/phpAction.js"></script>
+<script type="text/javascript" src="skincr/js/service/SingleRemote-client.js"></script>
+<script type="text/javascript" src="skincr/js/service/WebServer-client.js"></script>
+<script type="text/javascript" src="skincr/js/service/SingleDatasets.js"></script>
+
+<script type="text/javascript" src="skincr/js/service/teacher.js"></script>
+<script type="text/javascript" src="skincr/js/service/teacher-main.js"></script>
+
+<script type="text/javascript" src="skincr/js/service/main.js"></script>
+</body>
+</html>
