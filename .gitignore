@@ -2,4 +2,10 @@
 conf/
 logs/
 node_modules/
+public/index.html
+public/netconnect.html
+public/SingleTeacher.html
+public/SingleStudent.html
+public/SinglePreview.html
+public/SingleMonitor.html
 docs/DaDaOnlineAPI说明.docx
