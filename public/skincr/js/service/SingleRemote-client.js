@@ -139,6 +139,7 @@ RemoteClient.prototype.sendAnswerSdp = function (wid, sdp) {
             sdp: sdp
         }
     };
+    console.log("##############sendAnswerSdp", JSON.stringify(data));
     this.call(data);
 };
 
