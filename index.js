@@ -1,13 +1,13 @@
 var argv = require('minimist')(process.argv.slice(2));
 var SocketCluster = require('socketcluster').SocketCluster;
-var cpus = require('os').cpus().length;
+var cpus = require('os').cpus();
 
 /*****************************************
  *
  *
  ******************************************/
 var socketCluster = new SocketCluster({
-    workers: Number(argv.w) || cpus,
+    workers: Number(argv.w) || cpus.length,
     brokers: Number(argv.b) || 1,
     port: Number(argv.p) || 3000,
     appName: argv.n || null,
